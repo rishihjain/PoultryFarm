@@ -1,0 +1,30 @@
+runtime: php82  
+
+# Define URL routing
+handlers:
+  # Serve images, CSS, and JavaScript files from the assets and images directories
+  - url: /assets
+    static_dir: assets
+  - url: /companyimages
+    static_dir: companyimages
+  - url: /productimages
+    static_dir: productimages
+  - url: /profileimages
+    static_dir: profileimages
+
+  # Serve PHP files
+  - url: /.*\.php
+    script: auto  # Automatically handle PHP requests
+
+  # Catch-all handler for other static files (if needed)
+  - url: /.*
+    script: auto  # Default route handler for all other URLs
+
+entrypoint: serve index.php
+
+env_variables:
+  CLOUDSQL_USER: root
+  CLOUDSQL_DB: poultry
+  CLOUDSQL_PASSWORD: 8q7I-T;-f@yeX-69
+  CLOUDSQL_DSN: /cloudsql/poultryfarm-437006:us-central1:poultry-app
+
